@@ -1,0 +1,13 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : ban                                       ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : ban site/user <site or username>
+
+   This command will ban either a site or a user.  For POD application,
+   ban has been modified to allow us to filter users from banned domains.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : unban, listbans
+~FT+-----------------------------------------------------------------------------+
+

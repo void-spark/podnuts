@@ -1,0 +1,48 @@
+~FT+-----------------------------------------------------------------------------+   
+~FT   Command~RS  : macro                                     ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : macro                                 (to list the macros)
+              macro <macroname>=<replacement text>  (to make/change a macro)
+              macro <macroname>=                    (to delete a macro)
+              $n to match name  (replaces $1)
+
+   Description:
+
+   Gender matching in macros
+    1) User gender matching:
+          There are three $ variables that are used for user gender
+          matching (neuter will sub in for exception words see .help exception)
+      1a) $e
+          If you are male this will become "he"
+          If you are female this will become "she"
+      1b) $m
+          If you are male this will become "him"
+          If you are female this will become "her"
+      1c) $s
+          If you are male this will become "his"
+          If you are female this will become "her"
+    2) Target gender matching:
+          When you use this kind of gender matching, the gender of
+          the person you are targeting the macro to (the victim) will
+          determine the output.
+          (note)  The first word after the macro MUST be the targets name.
+      (usage) Same as above except that CAPITAL letters are used and instead 
+              of matching your gender, it will match the gender of the user 
+              you specify as the target.
+       2a) $E = (I used the last letter in "hE")
+       2b) $M = (I used the last letter in "hiM")
+       2c) $S = (I used the last letter in "hiS")
+
+    EXAMPLES:
+   ~OL~FR .macro .snu=;snuggles $n in $s pec flippers, patting them on $S sides.
+    ~OL~FTProduces: (Bob -> Beth)
+    Bob snuggles Beth in his pec flippers, patting them on her sides.
+
+~OL~FR    .macro .hug=.emote hugs $n in $s flippers.
+    ~OL~FTProduces: (Beth -> Bob)   
+    Beth hugs Bob in her flippers
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : action
+~FT+-----------------------------------------------------------------------------+

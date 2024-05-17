@@ -1,0 +1,14 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : procstat                                   ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : procstat [mem/stat/status] [-b]
+
+   This shows various info from /proc (special linux fs with process info)
+   on it's own it shows a short compiled page with most important info,
+   with mem, stat or status as option it shows all info available in
+   either statm , stat or status (files under /proc/pid#/ )
+  
+   the -b option shows some stats as bytes instead of Kb's 
+
+~FT+-----------------------------------------------------------------------------+

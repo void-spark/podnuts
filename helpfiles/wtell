@@ -1,0 +1,13 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : wtell                                     ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : wtell <message>
+
+   This command allows superusers to emote within the 'wtell' subtalker.
+   Current levels supported are ELDER -> LEADER.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : wemote, wsto, wrev
+~FT+-----------------------------------------------------------------------------+
+

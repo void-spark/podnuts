@@ -1,0 +1,17 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : sto                                       ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : sto <user> <text>
+
+   Note: The person you are speaking to must be in the same room as you
+   for it to work. Also note that the name can be shortened.
+
+   Say to - In order to speak to a user publicly, yet specifically to them
+   you can use the .sto command. This will display a message You say ( to
+   <user> ): <text>, where user is the user you specified.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : say, emote, tell, pemote
+~FT+-----------------------------------------------------------------------------+
+

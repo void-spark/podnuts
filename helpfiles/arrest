@@ -1,0 +1,12 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : arrest                                    ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : arrest <username>
+
+   This command is used to throw that annoying user into the shark_alley.
+   This, like muzzle and curse, is a level oriented command.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : release, muzzle, unmuzzle
+~FT+-----------------------------------------------------------------------------+

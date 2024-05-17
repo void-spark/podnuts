@@ -1,0 +1,16 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Ranks~RS    : POD Transient                           ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Synopsis~RS : POD Transient rank is the base user level.  Transients
+              are either new to POD, or they don't swim by all that much..
+              hence the name.  This user rank is a very necessary part of
+              the structure of our pod as it gives established members a
+              chance to get to know new ones.
+              Transients are limited as to the number and type of commands
+              they have. For explanation, we suggest reading: 
+              .help transient
+
+~FT+-----------------------------------------------------------------------------+
+   User has a total of 42 commands.
+~FT+-----------------------------------------------------------------------------+

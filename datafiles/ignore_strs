@@ -1,0 +1,28 @@
+# room msg when (un)ignoring pictures
+ign_pics        's melon now reflects pictures
+unign_pics      can see pictures again
+
+# room msg when (un)ignoring everyphin
+ign_all         is now ignoring everyone.
+unign_all       is listening again.
+
+# room msg when (un)ignoring atmoses
+ign_atmos       now ignores atmospherics
+unign_atmos     notices atmospherics again
+
+# room msg when (un)ignoring system msgs
+ign_sys         stops listening to system msgs
+unign_sys       listens to system msgs again
+
+# room msg when (un)ignoring wizard chitter
+ign_wtell       ignores wise talk
+unign_wtell     stops ignoring wise talk
+
+# room msg when (un)ignoring shouts
+ign_shout       plugs his ears against shouting
+unign_shout     removes the kelp from his melon to hear shouting again
+
+# room msg when (un)ignoring tells
+ign_tell        doesn't want to hear any ptivate chitter anymore
+unign_tell      listens again to tells and privs and so
+

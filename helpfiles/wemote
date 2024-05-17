@@ -1,0 +1,12 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : wemote                                    ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : wemote <message>
+
+   This command allows superusers to emote within the 'wemote' subtalker.
+   Current levels supported are ELDER -> LEADER. 
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : wtell wsto
+~FT+-----------------------------------------------------------------------------+

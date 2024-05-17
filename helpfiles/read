@@ -1,0 +1,13 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : read                                      ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : read [<roomname>/<boardname>]
+
+   This displays the message board of a given room or free board.  
+   If no argument is supplied it assumes your current room as default.
+   you can only read the room you are currently in unless you are a wiz.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : write, search, wipe
+~FT+-----------------------------------------------------------------------------+

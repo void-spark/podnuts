@@ -1,0 +1,21 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : tandem                                    ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : tandem <user>
+   
+   Note: The phin you are trying to swim with must be in the same room
+   as you for it to work.
+   
+   Tandem allows you to become the leader of up to 3 phins who will follow
+   you from room to room in tandem formation.  Users who are following the 
+   leader of the tandem swim cannot leave the room they are in on their
+   own and must .break the tandem swim to regain individual control of 
+   their room of choice.  This command is great for phins (up to 4) that 
+   want to swim around with eachother.  Also works for members to tandem 
+   swim transients to different rooms as well.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : break, accept
+~FT+-----------------------------------------------------------------------------+
+

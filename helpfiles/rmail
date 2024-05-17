@@ -1,0 +1,15 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : rmail                                     ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : rmail [message number]
+		  : rmail new
+
+   This lists out your mailbox to you.
+   Adding a number as argument shows that specific msg.
+   To just read new mail, use .rmail new
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : smail, dmail, from
+~FT+-----------------------------------------------------------------------------+
+

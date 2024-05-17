@@ -1,0 +1,12 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : break                                     ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : break
+   
+   Used to terminate a tandem swim.  This command may also be used to 
+   cancel the OFFER of a tandem swim.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : tandem, accept
+~FT+-----------------------------------------------------------------------------+

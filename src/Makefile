@@ -1,0 +1,2 @@
+all: 
+	jam install

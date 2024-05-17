@@ -1,0 +1,15 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : untag                                       ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : untag <username> <reason>
+
+   This command is used to untag a certain user, removing his visible
+   'tag' (namely a '?' before their name). 
+   
+   The reason string must be provided and is written to the users ulog
+   so other adphins can look up why the user was un-tagged.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : tag, ulog
+~FT+-----------------------------------------------------------------------------+

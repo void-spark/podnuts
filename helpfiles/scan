@@ -1,0 +1,12 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : scan                                      ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : scan [<username>] 
+
+   This shows you all the important stats about your login.
+   Also shows some general info about other users.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : examine
+~FT+-----------------------------------------------------------------------------+

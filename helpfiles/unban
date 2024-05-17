@@ -1,0 +1,14 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : unban                                     ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : unban site/user <site or username>
+
+   This command will unban either a site or a user, the name of which are
+   written in the files 'siteban' and 'userban' in the 'podnuts/datafiles'
+   directory.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : ban, listbans
+~FT+-----------------------------------------------------------------------------+
+

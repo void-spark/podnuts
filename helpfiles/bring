@@ -1,0 +1,14 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : bring                                     ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : bring <username>
+
+   Moves a user directly to the room you are in. The user is not brought 
+   if he is already in the same room as you.  This command is 1/2 of the 
+   moving process as the user being 'brought' must use 'join' to accept 
+   the bring.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : go, join, move
+~FT+-----------------------------------------------------------------------------+

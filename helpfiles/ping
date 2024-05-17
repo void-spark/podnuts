@@ -1,0 +1,20 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : ping                                   ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : ping <user> 
+   
+   Note: The phin you are speaking does not need to be in the same room
+   as you for it to work. Also note that the name can be shortened.
+   
+   This command allows a private chat channel to be formed between two 
+   users.  The ping command alone will merely send a request to the entered
+   username to open an ecco conversation.  See .ecco for the second part 
+   of this command structure.
+
+   Multiple ecco sessions cannot exist.  Most recent ping sent is the
+   active ping.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : ecco, eecco, end
+~FT+-----------------------------------------------------------------------------+

@@ -1,0 +1,24 @@
+POD help system
++------------------------------------------------------------------------------+
+Note: if you want a list of commands when you type .h instead of this
+file, type ".help commands", or use .set to change to "Help setting" option
+
+This is where you can get info on POD...
+After typing '.help', put the following to get various bits of info :)
+
+                <commands>  - A list of commands available to you.
+                <rules>     - The rules of POD.
+                <ranks>     - Rank levels on POD.
+                <credits>   - Phins involved in getting & keeping POD going.
+                <promotion> - The rules etc for getting promoted.
+
+You can also get POD information by typing the following:
+                .upgrades  - Information on new commands and code updates.
+                .news      - General POD news (e.g: Downtime, events)
+
+If you are new here, you can promote your account if you follow these 3
+steps:  
+                1) type .desc (a short description of yourself).
+                2) .set gend (your gender)    
+                3) .accreq (your e-mail address). 
++------------------------------------------------------------------------------+

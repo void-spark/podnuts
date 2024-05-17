@@ -1,0 +1,17 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : back                                      ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : back
+   
+   This command will return any level user to the main room (login room). 
+   Most common use will be Transient level users who have been 'brought' to
+   other rooms.  This command is universal and will work no matter where on 
+   POD the user is (not dependant on rooms being conjoined).
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : join, bring, invite
+~FT+-----------------------------------------------------------------------------+
+
+
+

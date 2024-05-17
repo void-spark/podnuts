@@ -1,0 +1,15 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : muzzle                                    ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : muzzle <username>
+
+   Muzzles a user which prevents them speaking, shouting, emoting and
+   mailing other people. The muzzle levels are based upon the user
+   level of whoever muzzled the user. If a user is muzzled by an ELDER
+   for instance he can be unmuzzled by and SHAMAN or a LEADER, if however
+   he is muzzled by a LEADER only another LEADER can unmuzzle him.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : unmuzzle, arrest, release
+~FT+-----------------------------------------------------------------------------+

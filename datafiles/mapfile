@@ -1,0 +1,23 @@
+~FG~BBPOD - Basic room structure map.
+              (\_             __       __             _/)
+              \ ~``````~~~~~^^  `~   ~`  ^^~~~~~``````~ /
+               \    <map_tag room="coral_reef" text="Coral_Reef">    \ /   <map_tag room="kelp_forest" text="Kelp_Forest">    /
+                \           \      ^      /           /
+                 \             <map_tag room="ocean_cove" text="Ocean_Cove">            /
+                   \               |               /
+                     )         <map_tag room="open_ocean" text="Open_Ocean">        (
+                       )           |           (
+                         )      <map_tag room="caverns" text="Caverns">      (
+                           )       |       (
+                            |       <map_tag room="sanctuary" text="S">     |
+                            |     <map_tag room="sanctuary" text="D a">     |
+                           |      <map_tag room="sanctuary" text="o n">      |
+                           |      <map_tag room="sanctuary" text="l c">      |
+                          |       <map_tag room="sanctuary" text="p t">       |
+                          |       <map_tag room="sanctuary" text="h u">       |
+                          |       <map_tag room="sanctuary" text="i a">       |
+                          |       <map_tag room="sanctuary" text="n r">       |
+                          |         <map_tag room="sanctuary" text="y">       |
+                                   |
+                              <map_tag room="slit_dreams" text="Slit_Dreams">
+

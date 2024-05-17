@@ -1,0 +1,21 @@
+
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : ecco                                      ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : ecco <text>
+   
+   To accept a received incoming ping, simply type .ecco and your
+   response.  This executes the personal chat channel.  From this point
+   forward, either party only need type .ecco <text> to send their text
+   to the individual they are ecco'ing with.  It is suggested that the
+   macro command be used to create a shortcut to ecco and eecco (ecco
+   emote) so as to make this command even more useful [ and ] are available
+   but must be set under your individual profile to activate them.  Ask an
+   admin if you require assistance.
+
+   NOTE: Either party at any time can end ecco session with .end command.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : ping, eecco, end
+~FT+-----------------------------------------------------------------------------+

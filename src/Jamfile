@@ -1,0 +1,196 @@
+C++FLAGS = -Wall `xml2-config --cflags` ;
+CCFLAGS = -Wall `xml2-config --cflags` ;
+DEFINES = DEBUG_NEW DEBUG_STL MALLOC_STATS ;
+OBJECT_LOCATION = ./objs/ ;
+EXE = pod ;
+SOFTBOOT_EXE = softbooter ;
+INSTALL_ROOT = ../ ;
+EXE_INSTALL = $(INSTALL_ROOT)/bin_new/ ;
+SOFTBOOT_INSTALL = $(INSTALL_ROOT)/bin/ ;
+PLUGINS_INSTALL = $(INSTALL_ROOT)/plugins_new/ ;
+
+switch $(OS)
+{
+   case FREEBSD : 
+      C++ = g++30 ;
+      CC = gcc30 ;
+      LINK = g++30 ;
+      LINKFLAGS = -rdynamic ;
+      LINKLIBS = -lcrypt ;
+      SHRLINKFLAGS = -shared ;
+      SHRC++FLAGS = -fPIC ;
+      SHRLINKLIBS = ; 
+      PRESHR = lib ;
+      SUFSHR = .so ;
+      OPTIM = -pipe -g ;
+
+   case LINUX :
+      C++ = g++ ;
+      CC = gcc ;
+      LINK = g++ ;
+      LINKFLAGS = -rdynamic ;
+      LINKLIBS = -lcrypt -ldl `xml2-config --libs` ;
+      SHRLINKFLAGS = -shared ;
+      SHRC++FLAGS = -fPIC ;
+      SHRLINKLIBS = ; 
+      PRESHR = lib ;
+      SUFSHR = .so ;
+      OPTIM = -pipe -g ;
+
+   case CYGWIN :
+      C++ = g++ ;
+      CC = gcc ;
+      LINK = g++ ;
+      LINKFLAGS = ;
+      LINKLIBS = -lcrypt ; 
+      DLLTOOL = dlltool ;
+      DLLWRAP = dllwrap ;
+      SHRC++FLAGS = ;
+      SHRLINKFLAGS = -shared -Wl,--export-all-symbols  ;
+      SHRLINKLIBS = -L./ -l$(EXE) ; 
+      PRESHR = lib ;
+      SUFSHR = .dll ;
+      OPTIM = -pipe ;
+} 
+
+rule SharedLibrary
+{
+   # SharedLibrary <name> : <sources> ;
+   Main $(PRESHR)$(1)$(SUFSHR) : $(2) ;
+   C++FLAGS on $(PRESHR)$(1)$(SUFSHR) = $(C++FLAGS) $(SHRC++FLAGS) ;
+   LINKFLAGS on $(PRESHR)$(1)$(SUFSHR) = $(LINKFLAGS) $(SHRLINKFLAGS) ;
+   LINKLIBS on $(PRESHR)$(1)$(SUFSHR) = $(LINKLIBS) $(SHRLINKLIBS) ;
+
+   if $(OS) = CYGWIN
+   {
+      Depends $(PRESHR)$(1)$(SUFSHR) : lib$(EXE).a ;
+   }
+}
+
+rule DefFile
+{
+   Depends $(1) : $(2) ;
+}
+
+actions DefFile
+{
+   $(DLLTOOL) --export-all-symbols --output-def $(1) $(2)
+}
+
+rule ImportLib
+{
+   Depends $(1) : $(2) ;
+   FULLEXE on $(1) = [ FAppendSuffix $(EXE) : $(SUFEXE) ] ;
+}
+
+actions ImportLib
+{
+   $(C++) -shared -dll -o $(FULLEXE) $(2) -Wl,--export-all-symbols $(LINKLIBS) -Wl,--out-implib,$(1)
+   rm -f $(FULLEXE)
+}
+
+actions CompilerInfo
+{
+   echo \#define COMPILE_TIME \"`date`\" > $(1)
+   echo \#define UNAME \"`uname -srvm`\" >> $(1)
+}
+
+actions CodeInfo
+{
+   echo "creating c_count_output.cpp"
+   rm -f c_count_output.cpp
+   if [ ! -x `which c_count` ]; then \
+   	echo nogo; \
+   else \
+   	echo "#include \"general_headers.h\""                        >  c_count_output.cpp; \
+   	echo "void c_count_output(UR_OBJECT user)"                   >> c_count_output.cpp; \
+   	echo "{"                                                     >> c_count_output.cpp; \
+   	c_count $(MAIN_SOURCES) $(SIMPLE_TYPES_SOURCES) $(SHARED_LIBS_SOURCES) $(MAIN_SOURCES:B).h $(SIMPLE_TYPES_SOURCES:B).h $(SHARED_LIBS_SOURCES:B).h |sed 's/\(.*\)$/   write_user(user,"\1\\n");/' >> c_count_output.cpp; \
+   	echo "}"                                                     >> c_count_output.cpp; \
+   fi
+}
+
+rule MainExecutable
+{
+   if $(OS) = CYGWIN
+   {
+      local OBJECTS ;
+      local FULLEXE ;
+      OBJECTS = $(2:S=$(SUFOBJ)) ;
+      FULLEXE = [ FAppendSuffix $(1) : $(SUFEXE) ] ;
+      
+      Depends exe : $(FULLEXE) ;
+      
+      Objects $(2) ;
+
+      DefFile $(1).def : $(OBJECTS) ;      
+      ImportLib lib$(1).a : $(OBJECTS) ;
+      Clean clean : $(1).def lib$(1).a ;
+      if $(FULLEXE) != $(1)
+      {
+         Depends $(1) : $(FULLEXE) ;
+         NotFile $(1) ;
+      }
+#depends on libpod.a cause making that file generates a dummy pod exe that is removed.      
+      CompileExeCygwin $(FULLEXE) : $(1).def lib$(1).a $(OBJECTS) ;
+   }
+   else
+   {
+      Main $(1) : $(2) ;
+   }
+}
+
+rule CompileExeCygwin
+{
+   Depends $(1) : $(2) ;
+}
+
+actions CompileExeCygwin
+{
+   $(DLLTOOL) --dllname $(1) --output-exp $(1).exp --def $(2[1])
+   $(LINK) -o $(1) -Wl,--base-file,$(1).base $(1).exp $(2[3-]) $(LINKLIBS)
+   $(DLLTOOL) --dllname $(1) --base-file $(1).base --output-exp $(1).exp --def $(2[1])
+   $(LINK) -o $(1) $(1).exp $(2[3-]) $(LINKLIBS)
+   rm $(1).exp $(1).base 
+}
+
+MAIN_SOURCES = podnuts.cpp user_objects.cpp socket_funcs.cpp GenericMessage.cpp
+               GenericMessageStore.cpp MailMessage.cpp MailBox.cpp Board.cpp
+               crash.cpp who.cpp pod_alloc.cpp filter.cpp macro.cpp account_reg.cpp
+               parse.cpp system.cpp bot.cpp speech_funcs.cpp more.cpp shutdown.cpp
+               chitter.cpp loadsave_user.cpp examine_stat.cpp softboot.cpp
+               review.cpp loadsave_config.cpp tandem.cpp boards.cpp
+               admin.cpp color.cpp version.cpp c_count_output.cpp set.cpp curse.cpp
+               smail.cpp MailPort.cpp MailCopyToVar.cpp MailForward.cpp move.cpp
+               dns_socket.cpp xalloc.cpp info_port.cpp ignore.cpp string_misc.cpp
+               telnet.cpp clones.cpp dyn_str.cpp hist.cpp dynamicVarsController.cpp
+               globals.cpp file_io.cpp cmd_main.cpp banning.cpp login.cpp Room.cpp
+               help.cpp logging.cpp wordfind.cpp rfc854.cpp
+               time_utils.cpp TelnetSocket.cpp CRTLineBuffer.cpp QMethod.cpp
+               UserTelnetHandler.cpp UserTelnetSockObjectCreator.cpp StringLibrary.cpp
+               XmlTextReader.cpp gender.cpp StringLibraryCommands.cpp ;
+      
+SIMPLE_TYPES_LOCATION = ./simple_types ;
+SIMPLE_TYPES_SOURCES = [ GLOB $(SIMPLE_TYPES_LOCATION) : *.cpp ] ;
+
+SHARED_LIBS_LOCATION = ./plugins ;
+SHARED_LIBS_SOURCES = [ GLOB $(SHARED_LIBS_LOCATION) : *.cpp ] ;
+
+POD_SOURCES = $(MAIN_SOURCES) $(SIMPLE_TYPES_SOURCES) ;
+
+LOCATE_TARGET = $(OBJECT_LOCATION) ;
+
+CompilerInfo compiler.h ;
+CodeInfo c_count_output.cpp ;
+Always compiler.h c_count_output.cpp ;
+MainExecutable $(EXE) : $(POD_SOURCES) ;
+Main $(SOFTBOOT_EXE) : softbooter.cpp ;
+for SHARED_LIB_SOURCE in $(SHARED_LIBS_SOURCES)
+{
+   SHARED_LIB = $(SHARED_LIB_SOURCE:B) ;
+   SharedLibrary $(SHARED_LIB) : $(SHARED_LIB_SOURCE) ;
+   InstallBin $(PLUGINS_INSTALL) : $(PRESHR)$(SHARED_LIB)$(SUFSHR) ;
+}
+InstallBin $(EXE_INSTALL) : $(EXE)$(SUFEXE)  ;
+InstallBin $(SOFTBOOT_INSTALL) : $(SOFTBOOT_EXE)$(SUFEXE) ;
+

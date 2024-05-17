@@ -1,0 +1,12 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : go                                        ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : go <room>
+   This command moves you to another room which must be linked to 
+   your current one (unless you are an Elder or higher).  Usage of 
+   'go' by itself will return you to the login room.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : move, bring, join
+~FT+-----------------------------------------------------------------------------+

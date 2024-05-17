@@ -1,0 +1,12 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : unmuzzle                                    ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : unmuzzle <username>
+
+   Removes a muzzle from a user. This will only work if the user 
+   was muzzled by someone of equal or lesser level that yourself.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : muzzle, arrest, release
+~FT+-----------------------------------------------------------------------------+

@@ -1,0 +1,15 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : wipe                                      ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : wipe [<roomname>] <number of message(s) from top>/all
+
+   This wipes the message board.  Multiple messages can be wiped by 
+   seperating the message number with a space.  If you specify "all" it
+   wipes everything.
+
+   eg: .wipe 2 8-10  will delete messages 2 and 8-10 from the board.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : read, write, search
+~FT+-----------------------------------------------------------------------------+

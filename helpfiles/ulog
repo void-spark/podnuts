@@ -1,0 +1,17 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : ulog                                      ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : ulog <user> [message]
+
+   This allows an adphin to write a comment to a users ulog, or to read
+   a users ulog. 
+   the ulog is a per user log/history containing timestamped notes with 
+   relevance to administration.
+
+   Things that are automaticly logged to the ulog are : bans, unbans,
+   arrests, unarrests, tags, untags and account requests. 
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : tag untag
+~FT+-----------------------------------------------------------------------------+

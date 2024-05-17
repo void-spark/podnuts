@@ -1,0 +1,10 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : look                                      ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : look
+
+   Shows the description of the current room, who is in it, how 
+   many messages are on the board and the rooms access.
+
+~FT+-----------------------------------------------------------------------------+

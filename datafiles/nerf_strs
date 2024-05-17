@@ -1,0 +1,34 @@
+# simple usage string
+nerf_usage     Usage: .nerf <person>.
+# msg when you do .nerf [your own name]
+nerf_self      Why nerf yourself?!
+# msg when you .nerf someone not in the same room as yourself
+nerf_no_tgt    That user isn't in this room.
+# msg when you .nerf and have no shots left
+nerf_no_ammo   You have no nerf energy
+# msg when you try to .nerf bottie
+nerf_bot       is too busy to play with you!
+# msg you get when you nerfed someone
+nerf_hit       You nerf your target.
+# msg when someone is nerfed
+nerf_is_hit    is nerfed by
+# msg you get when you miss someone
+nerf_mis       You miss your target.
+# msg when someone is missed
+nerf_is_mis    's nerf misses
+# msg you get when you die
+nerf_die       Sorry, you have died.
+# msg when someone dies
+nerf_is_die    is nerfed to death by
+# msg you get when trying to .nerf in another room then the nerf room
+nerf_bad_rm    Not in here!
+# msg you get when trying to .charge in another room then the nerf room
+# two part:  part1 roomname part2
+chrg_bad_rm1   You must be in the
+chrg_bad_rm2   to recharge.
+# msg you get when you recharge your weapon
+chrg_chrg      You recharge your nerfgun.
+# msg others see when rechargin your nerfgunm two part :
+# your_name part1 his/her part2
+chrg_chrg_rm1  recharges
+chrg_chrg_rm2  nerfgun.

@@ -1,0 +1,176 @@
+OBJECT_LOCATION = ./objs
+SHARED_LIBS_LOCATION = ./plugins
+PLUGINS_OBJECT_LOCATION = $(SHARED_LIBS_LOCATION)/objs
+SIMPLE_TYPES_LOCATION = ./simple_types
+SIMPLE_TYPES_OBJECT_LOCATION =  $(SIMPLE_TYPES_LOCATION)/objs
+TINYXML_LOCATION = ./tinyxml
+TINYXML_OBJECT_LOCATION =  $(TINYXML_LOCATION)/objs
+#WARNINGS = -Wall -W -Wpointer-arith -Wcast-align -Wredundant-decls -Wold-style-cast
+WARNINGS = -Wall
+EXE = pod.ex
+DYNLIB_EXT = .so
+SOFTBOOT_EXE = softbooter.ex
+INSTALL_ROOT = ..
+EXE_INSTALL = $(INSTALL_ROOT)/bin/$(EXE)
+SOFTBOOT_EXE_INSTALL = $(INSTALL_ROOT)/bin/$(SOFTBOOT_EXE)
+PLUGINS_INSTALL = $(INSTALL_ROOT)/plugins_new
+#LINK_OPTS =
+LINK_OPTS = -lcrypt -rdynamic
+DEBUG = 
+GEN_OPTS = -DNO_USER_IGNORE -pipe
+#GEN_OPTS = -DNO_USER_IGNORE -g -pipe -O2 -mpentium -fno-omit-frame-pointer
+# Omit frame pointer crashes the whole kaboodle
+#GEN_OPTS = -DNO_USER_IGNORE -pipe -O2 -mpentium -fomit-frame-pointer
+#GEN_OPTS = -g -DNO_USER_IGNORE -DDEBUG_MALLOC -DMALLOC_STATS
+#GEN_OPTS = -b i586-pc-linux-gnulibc1 -DDEBUG_MALLOC -DMALLOC_STATS -DNO_USER_IGNORE -pipe
+#GEN_OPTS = -b i586-pc-linux-gnulibc1 -O2 -fomit-frame-pointer -mpentium
+CC = g++30
+
+OBJECTS = $(OBJECT_LOCATION)/podnuts.o \
+          $(OBJECT_LOCATION)/user_objects.o \
+          $(OBJECT_LOCATION)/socket_funcs.o \
+          $(OBJECT_LOCATION)/GenericMessage.o \
+          $(OBJECT_LOCATION)/GenericMessageStore.o \
+          $(OBJECT_LOCATION)/MailMessage.o \
+          $(OBJECT_LOCATION)/MailBox.o \
+          $(OBJECT_LOCATION)/Board.o \
+          $(OBJECT_LOCATION)/crash.o \
+          $(OBJECT_LOCATION)/who.o \
+          $(OBJECT_LOCATION)/filter.o \
+          $(OBJECT_LOCATION)/macro.o \
+          $(OBJECT_LOCATION)/account_reg.o \
+          $(OBJECT_LOCATION)/parse.o \
+          $(OBJECT_LOCATION)/system.o \
+          $(OBJECT_LOCATION)/bot.o \
+          $(OBJECT_LOCATION)/speech_funcs.o \
+          $(OBJECT_LOCATION)/more.o \
+          $(OBJECT_LOCATION)/shutdown.o \
+          $(OBJECT_LOCATION)/chitter.o \
+          $(OBJECT_LOCATION)/loadsave_user.o \
+          $(OBJECT_LOCATION)/examine_stat.o \
+          $(OBJECT_LOCATION)/softboot.o \
+          $(OBJECT_LOCATION)/review.o \
+          $(OBJECT_LOCATION)/loadsave_config.o \
+          $(OBJECT_LOCATION)/tandem.o \
+          $(OBJECT_LOCATION)/boards.o \
+          $(OBJECT_LOCATION)/glob_strings.o \
+          $(OBJECT_LOCATION)/admin.o \
+          $(OBJECT_LOCATION)/color.o \
+          $(OBJECT_LOCATION)/version.o \
+          $(OBJECT_LOCATION)/c_count_output.o \
+          $(OBJECT_LOCATION)/set.o \
+          $(OBJECT_LOCATION)/curse.o \
+          $(OBJECT_LOCATION)/smail.o \
+          $(OBJECT_LOCATION)/MailPort.o \
+          $(OBJECT_LOCATION)/MailCopyToVar.o \
+          $(OBJECT_LOCATION)/MailForward.o \
+          $(OBJECT_LOCATION)/move.o  \
+          $(OBJECT_LOCATION)/xalloc.o \
+          $(OBJECT_LOCATION)/info_port.o \
+          $(OBJECT_LOCATION)/ignore.o \
+          $(OBJECT_LOCATION)/string_misc.o \
+          $(OBJECT_LOCATION)/telnet.o \
+          $(OBJECT_LOCATION)/clones.o \
+          $(OBJECT_LOCATION)/dyn_str.o \
+          $(OBJECT_LOCATION)/hist.o \
+          $(OBJECT_LOCATION)/dynamicVarsController.o \
+          $(OBJECT_LOCATION)/globals.o \
+          $(OBJECT_LOCATION)/file_io.o \
+          $(OBJECT_LOCATION)/cmd_main.o \
+          $(OBJECT_LOCATION)/banning.o \
+          $(OBJECT_LOCATION)/login.o \
+          $(OBJECT_LOCATION)/Room.o \
+          $(OBJECT_LOCATION)/help.o
+
+MAIN_SOURCES = $(OBJECTS:$(OBJECT_LOCATION)/%.o=./%.cpp)
+MAIN_OBJECTS = $(MAIN_SOURCES:./%.cpp = $(OBJECT_LOCATION)/%.o)
+
+SHARED_LIBS_SOURCES = $(wildcard $(SHARED_LIBS_LOCATION)/*.cpp)
+SHARED_LIBS = $(SHARED_LIBS_SOURCES:$(SHARED_LIBS_LOCATION)/%.cpp=$(SHARED_LIBS_LOCATION)/lib%$(DYNLIB_EXT))
+
+SIMPLE_TYPES_SOURCES = $(wildcard $(SIMPLE_TYPES_LOCATION)/*.cpp)
+SIMPLE_TYPES_OBJECTS = $(SIMPLE_TYPES_SOURCES:$(SIMPLE_TYPES_LOCATION)/%.cpp=$(SIMPLE_TYPES_OBJECT_LOCATION)/%.o)
+
+TINYXML_SOURCES = $(wildcard $(TINYXML_LOCATION)/*.cpp)
+TINYXML_OBJECTS = $(TINYXML_SOURCES:$(TINYXML_LOCATION)/%.cpp=$(TINYXML_OBJECT_LOCATION)/%.o)
+
+POD_OBJECTS = $(OBJECTS) $(SIMPLE_TYPES_OBJECTS) $(TINYXML_OBJECTS)
+
+all: install
+
+install: $(EXE) $(SHARED_LIBS) $(SOFTBOOT_EXE)
+	cp -f $(EXE) $(EXE_INSTALL)
+	cp -f $(SHARED_LIBS) $(PLUGINS_INSTALL)
+	cp -f $(SOFTBOOT_EXE) $(SOFTBOOT_EXE_INSTALL)
+
+$(SOFTBOOT_EXE): softbooter.cpp
+	$(CC) $(DEBUG) $(GEN_OPTS) $(WARNINGS) -o $(SOFTBOOT_EXE) softbooter.cpp $(LINK_OPTS)
+
+$(EXE): compiler c_count_output $(POD_OBJECTS)
+	@echo "Linking pod executable"
+	@$(CC) $(DEBUG) $(GEN_OPTS) $(WARNINGS) -o $(EXE) $(POD_OBJECTS) $(LINK_OPTS)
+#	@echo "Stripping pod executable"
+#	@strip $(EXE)
+
+$(PLUGINS_OBJECT_LOCATION)/%.o: ./plugins/%.cpp
+	@printf "Now compiling .... %-15s\t%s lines \n" $*.cpp "`wc -l ./plugins/$*.cpp | cut -b3-7`"
+	@$(CC) $(DEBUG) $(GEN_OPTS) $(WARNINGS) -fPIC -c ./plugins/$*.cpp -o $(PLUGINS_OBJECT_LOCATION)/$*.o
+
+$(SHARED_LIBS_LOCATION)/lib%$(DYNLIB_EXT): $(PLUGINS_OBJECT_LOCATION)/%.o
+	@printf "Now linking ...... %-15s\n" lib$*$(DYNLIB_EXT)
+	@$(CC) -shared -o $@ $<
+
+compiler:
+	@echo "creating compiler.cpp"
+	@echo \#define COMPILE_TIME \"`date`\" > compiler.h
+	@echo \#define UNAME \"`uname -srvm`\" >> compiler.h
+
+c_count_output:
+	@echo "creating c_count_output.cpp"
+	@rm -f c_count_output.cpp
+	@if [ ! -x `which c_count` ]; then \
+		echo nogo; \
+	else \
+		echo "#include \"general_headers.h\""                        >  c_count_output.cpp; \
+		echo "void c_count_output(UR_OBJECT user)"                   >> c_count_output.cpp; \
+		echo "{"                                                     >> c_count_output.cpp; \
+		c_count $(notdir $(OBJECTS:.o=.cpp)) $(SIMPLE_TYPES_SOURCES) $(notdir $(OBJECTS:.o=.h)) $(SIMPLE_TYPES_SOURCES:.cpp=.h)|sed 's/\(.*\)$$/   write_user(user,"\1\\n");/' >> c_count_output.cpp; \
+		echo "}"                                                     >> c_count_output.cpp; \
+	fi
+
+clean: neat
+	rm -f $(EXE_INSTALL) $(PLUGINS_INSTALL)/*$(DYNLIB_EXT) \
+	$(SIMPLE_TYPES_OBJECT_LOCATION)/*.o \
+	$(TINYXML_OBJECT_LOCATION)/*.o \
+	$(SHARED_LIBS_LOCATION)/*$(DYNLIB_EXT) $(PLUGINS_OBJECT_LOCATION)/*.o
+
+neat:
+	rm -f $(EXE) *.bak $(OBJECT_LOCATION)/*.o
+
+$(OBJECT_LOCATION)/%.o:	./%.cpp
+	@printf "Now compiling .... %-15s\t%s lines \n" $*.cpp "`wc -l $*.cpp | cut -b3-7`"
+	@$(CC) $(DEBUG) $(GEN_OPTS) $(WARNINGS) -c $*.cpp -o $(OBJECT_LOCATION)/$*.o
+
+$(SIMPLE_TYPES_OBJECT_LOCATION)/%.o:	$(SIMPLE_TYPES_LOCATION)/%.cpp
+	@printf "Now compiling .... %-15s\t%s lines \n" $*.cpp "`wc -l $(SIMPLE_TYPES_LOCATION)/$*.cpp | cut -b3-7`"
+	@$(CC) $(DEBUG) $(GEN_OPTS) $(WARNINGS) -c $(SIMPLE_TYPES_LOCATION)/$*.cpp -o $(SIMPLE_TYPES_OBJECT_LOCATION)/$*.o
+
+$(TINYXML_OBJECT_LOCATION)/%.o:	$(TINYXML_LOCATION)/%.cpp
+	@printf "Now compiling .... %-15s\t%s lines \n" $*.cpp "`wc -l $(TINYXML_LOCATION)/$*.cpp | cut -b3-7`"
+	@$(CC) $(DEBUG) $(GEN_OPTS) $(WARNINGS) -c $(TINYXML_LOCATION)/$*.cpp -o $(TINYXML_OBJECT_LOCATION)/$*.o
+
+depend: $(MAIN_SOURCES) $(SIMPLE_TYPES_SOURCES) $(TINYXML_SOURCES) $(SHARED_LIBS_SOURCES)
+	@echo "Working out dependencies. Hang on ..."
+	@$(CC) -MM -pipe $(MAIN_SOURCES)               2>/dev/null|sed -e '1,$$s/^[a-zA-Z]/$$(OBJECT_LOCATION)\/&/' > .depend
+	@$(CC) -MM -pipe $(SIMPLE_TYPES_SOURCES)       2>/dev/null|sed -e '1,$$s/^[a-zA-Z]/$$(SIMPLE_TYPES_OBJECT_LOCATION)\/&/' >> .depend
+	@$(CC) -MM -pipe $(TINYXML_SOURCES)            2>/dev/null|sed -e '1,$$s/^[a-zA-Z]/$$(TINYXML_OBJECT_LOCATION)\/&/'      >> .depend
+	@$(CC) -MM -pipe $(SHARED_LIBS_SOURCES)        2>/dev/null|sed -e '1,$$s/^[a-zA-Z]/$$(PLUGINS_OBJECT_LOCATION)\/&/'       >> .depend
+	@echo "Done."
+
+lines:
+	@printf "Total lines in .cpp files: %s\n" "`wc -l $(notdir $(OBJECTS:.o=.cpp)) $(SIMPLE_TYPES_SOURCES) |grep total|sed -e 's/ *total//'|sed -e 's/^ *//'`"
+	@printf "Total lines in .h files: %s\n" "`wc -l $(notdir $(OBJECTS:.o=.h)) $(SIMPLE_TYPES_SOURCES:.cpp=.h) |grep total|sed -e 's/ *total//'|sed -e 's/^ *//'`"
+
+ifeq (.depend,$(wildcard .depend))
+include .depend
+endif

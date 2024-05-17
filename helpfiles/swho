@@ -1,0 +1,13 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : swho                                      ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : swho
+
+   This shows who is logged on at any particular time.  This command will 
+   also show more specific information about those signed in such as idle
+   times, species, gender, age, etc.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : who, people
+~FT+-----------------------------------------------------------------------------+

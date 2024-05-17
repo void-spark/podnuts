@@ -1,0 +1,14 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : cloak                                     ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : cloak
+
+   This will make you become cloaked so that other users cannot see
+   you in the room, the "who" list, or the user count.  For all intents
+   and purposes, you are completely invisible.  Coding has been added so
+   that you may fake a login/logoff upon engaging/disengaging the cloak.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : invis, vis, who, look
+~FT+-----------------------------------------------------------------------------+

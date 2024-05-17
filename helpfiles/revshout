@@ -1,0 +1,12 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : revshout                                  ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : revshout
+
+   This command allows you to review the "shout" buffer, displaying to you
+   the last few shouts in the talker.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : shout, shemote, review, revtell
+~FT+-----------------------------------------------------------------------------+

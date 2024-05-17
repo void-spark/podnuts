@@ -1,0 +1,13 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : ppicture                                  ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : ppicture [<username>] [<picturefile>] 
+
+   This command allows you to display an ascii picture to individual users.
+   An error is displayed if you try to show a picture that does not exist.
+   Also, typing .ppicture on its own will list out all available pictures.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : picture preview
+~FT+-----------------------------------------------------------------------------+

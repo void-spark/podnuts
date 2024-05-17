@@ -1,0 +1,13 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : preview                                   ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : preview [<picturefile>] 
+
+   This command allows you to preview an ascii picture . An error is
+   displayed if you try to view a picture that does not exist.  
+   Also, typing .preview on its own will list out all available pictures.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : ppicture picture
+~FT+-----------------------------------------------------------------------------+

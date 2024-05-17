@@ -1,0 +1,11 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : wake                                       ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : wake <user> <message>
+
+   This sends a message and a beeping noise to the users terminal hopefully
+   attracting his attention.
+
+~FT+-----------------------------------------------------------------------------+
+

@@ -1,0 +1,14 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : review                                    ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : review [<roomname>]
+
+   This will show the last few lines of conversation, emoting and 
+   echoes that took place in the room which you are in.  Usefull if
+   you get disconnected in the middle of a conversation or if you 
+   want to catch up on the present topic when you enter.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : revtell, revshout
+~FT+-----------------------------------------------------------------------------+

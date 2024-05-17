@@ -1,0 +1,10 @@
+
+The following faqs are available :
+
+  ~FGtransient~RS  -  about the why of the transient level
+  ~FGmood~RS       -  list of meanings of the different moods
+  ~FGpromotion~RS  -  requeries for admin promotions
+  ~FGboard~RS      -  info about pod's builtin texteditor
+  ~FGlevels~RS     -  all pod levels and promotion neccisities
+
+type ~FG.faq <faqname>~RS to see any of them.

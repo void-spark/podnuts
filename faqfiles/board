@@ -1,0 +1,30 @@
+~FT+-----------------------------------------------------------------------------+
+Since there seems to be a small ammount of confusion as to how to use
+POD's editor program, this help file has been created.
+
+Usage: .write/.smail/.entpro
+
+If your post is to be more than 1 line in length, do not type anything
+after the initial command, this will take you into the editor.
+It will look like this:
+____________
+*** Writing (mail/board/profile) etc.. ***
+Maximum of 15 lines, end with a '.' on a line by itself.
+1>
+------------
+When using the editor, word wrapping is your responsibility.  Do not
+paste, and do not let the editor wrap the words for you else you'll have
+words cut in half.
+Example: (you would hit the 'enter' key where it says <enter>)
+____________
+1> This is a test of posting on a board using manual word wrapping <enter>
+2> technique.  This way your words are never broken in half and your <enter>
+3> text is always aligned.
+4> .
+Save, redo or abort (s/r/a): 
+------------
+URL's can be posted, but sometimes it's best that you try to make the 
+url as short as possible to prevent it from breaking up. 
+
+If you have any questions, as me, Dolfin, and I'll be more than happy to help!
+~FT+-----------------------------------------------------------------------------+

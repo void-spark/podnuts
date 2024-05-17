@@ -1,0 +1,16 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : dmail                                     ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : dmail <number of messages>/all
+
+   Deletes your mail messages from your mailbox, and if argument is "all" 
+   then it will check to make sure you want to delete all your smail.
+   
+   When used with the .from command, you can selectively delete mail so 
+   as to retain the mail you want to.  Use #'s shown in the .from.  
+   eg:  .dmail 1, 3, 5-9, 13, 16-30 
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : smail, rmail, from
+~FT+-----------------------------------------------------------------------------+

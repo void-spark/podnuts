@@ -1,0 +1,15 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : tag                                       ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : tag <username> <reason>
+
+   This command is used to tag a certain user, giving him a visible
+   'tag' for other adphins (namely a '?' before their name). 
+   
+   The reason string must be provided and is written to the users ulog
+   so other adphins can look up why the user was tagged.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : untag, ulog
+~FT+-----------------------------------------------------------------------------+

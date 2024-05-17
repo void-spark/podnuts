@@ -1,0 +1,17 @@
+
+~FT+-----------------------------------------------------------------------------+
+~FT   POD Ranks                                           PODnuts
+~FT+-----------------------------------------------------------------------------+
+
+ Rank  Level names       Commands        Rank Description
+~FT   --  -----------       ----------      ------------------------------
+   0   Outcast           (13)            (dunce/arrest level)
+   1   Transient         (42)            (first user level)
+   2   Member            (77)            (primary user level)
+   3   Elder             (108)           (wizard level)
+   4   Shaman            (120)           (admin level)
+   5   Leader            (147)           (owner level)
+
+~FT+-----------------------------------------------------------------------------+
+   To get info on any of the user levels type '.ranks <levelname>' 
+~FT+-----------------------------------------------------------------------------+

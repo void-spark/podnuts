@@ -1,0 +1,49 @@
+OBJECTS = podnuts.o crash.o nerf.o who.o filter.o macro.o wholisthtml.o \
+          system.o session.o bot.o loadsave_user.o examine_stat.o
+WARNINGS = -Wall
+EXE = pod.local.ex
+EXE_INSTALL = ../bin/$(EXE)
+DEBUG = -ggdb
+
+install: $(EXE)
+        cp -f $(EXE) $(EXE_INSTALL)
+
+$(EXE): $(OBJECTS)
+        gcc $(DEBUG) $(WARNINGS) -o $(EXE) $(OBJECTS)
+
+podnuts.o: podnuts.c crash.h podnuts.h nerf.h who.h filter.h macro.h
+wholisthtml$
+        gcc $(DEBUG) $(WARNINGS) -c podnuts.c
+
+crash.o: crash.c crash.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c crash.c
+
+nerf.o: nerf.c nerf.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c nerf.c
+
+who.o: who.c who.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c who.c
+
+filter.o: filter.c filter.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c filter.c
+
+macro.o: macro.c macro.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c macro.c
+
+wholisthtml.o: wholisthtml.c wholisthtml.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c wholisthtml.c
+
+system.o: system.c system.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c system.c
+
+session.o: session.c session.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c session.c
+
+bot.o: bot.c bot.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c bot.c
+
+loadsave_user.o: loadsave_user.c loadsave_user.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c loadsave_user.c
+
+examine_stat.o: examine_stat.c examine_stat.h podnuts.h
+        gcc $(DEBUG) $(WARNINGS) -c examine_stat.c

@@ -1,0 +1,156 @@
+# Main config file.
+
+INIT:
+# the main port number where users telnet to.
+mainport           7300
+
+# the wizport that superusers can log in on. This port is unaffected
+# by the max_users variable.
+wizport            7301
+
+# duh
+wwwport            7302
+
+# used by cgiscripts e.d. , machine port
+infoport           7303
+
+# the maximum number of users that can log in on the main port.
+max_users          40
+
+# the maximum number of clones one user can have at any one time.
+max_clones         3
+
+# the time interval in secs on which the event functions are called.
+heartbeat          2
+
+# the time in secs which a user can idle at the login prompt before
+#  being booted off.
+login_idle_time    150
+
+#the time in secs which a user can idle once logged on before being
+# booted off. He will get a warning 1 minute beforehand.
+user_idle_time     1800
+
+# the time in secs which a user under member level can idle once logged on 
+# before being booted off. He will get a warning 1 minute beforehand.
+newbie_idle_time     900
+
+# If YES then any speech, shouts or emotes said by a user that
+# contains a word in the *swear_words[] array will not be displayed.
+ban_swearing       NO
+
+# If YES then talker will echo passwords at login.
+password_echo      NO
+
+#If YES then SIGTERM will be noted but ignored.
+ignore_sigterm     NO
+
+# If YES then users can have capital letters in their names ,
+# else everything gets converted to lower case except for the
+# first letter which is always capitalised automatically.
+allow_caps_in_name YES
+
+# If ON then talker will write to the system log.
+system_logging     ON
+
+# This is either ON or OFF and defines whether colour will be
+# enabled for new users. Bear in mind that the colour codes used are only
+# compatible with terminals that support ANSI colour. If the user is on
+# an incompatible type of terminal (eg an hpterm, wyse50 etc) then generally
+# all he'll get is a screenfull of garbage therefor its best if the default 
+# is OFF as he can always switch colour on using the .colour toggle command.
+color_on_def       ON
+
+# If ON then new users will have their prompt default to ON else
+# prompt is OFF.
+prompt_def         OFF
+
+# Defines whether characters will be echoed back to a user if their
+# client is operating in character mode.
+charecho_def       OFF
+
+# Minimum user level that can currently log in. If set to NONE
+# then anyone can log in, if set to NEW then anyone can log in but new 
+# accounts can't be created, if set to USER then newbies can't log in etc etc
+# This overrides wizport_level if needs be.
+minlogin_level     NONE
+
+# Lifetime in days of messages on the boards.
+mesg_life          7
+
+# Time at which the boards are checked each day to delete any
+# expired messages.
+mesg_check_time    01:00
+
+# Minimum number of users in a room before it can be made private.
+min_private        1
+
+# User level at which min_private can be overridden.
+ignore_mp_level    Elder
+
+# Minimum level of user who can log in via the wizport.
+wizport_level      Shaman
+
+# Minimum level of user who can enter a private room without an
+# invite. This does not apply to FIXED private rooms however since these are
+# probably to be used as wiz rooms so any user of WIZ and above can enter
+# a fixed private room.
+gatecrash_level    Shaman
+
+# If yes then even users who are afk will get timed out if they
+# idle for too long.
+time_out_afks	   YES
+
+# Maximum level of user which can be timed out.
+time_out_maxlevel  Member
+
+# This defines what the talker should do if a segmentation fault
+# or buss error occurs. If NONE then it does nothing and just crashes, if
+# IGNORE it jumps back to the start of the main loop in main() and if REBOOT
+# the talker will reboot itself.
+crash_action       REBOOT
+
+# This switches between old and new say style ([tester] hi! / you say: hi! )
+nuts_talk_style    OLD
+
+# This sets the default state of the atmos function (on/off) on bootup
+atmos_on           ON
+
+# this sets the time between two subsequent calls to the atmospherics function
+atmos_delay        900
+
+#this sets the time between pings
+ping_delay          15
+
+#what is the name of the idle room?
+idlers_room        dream_cove
+
+#what is the name of the newbie room ?
+entry_room         access_tunnel
+
+#What is the name of the mainroom ?
+main_room          ocean_cove
+
+#What is the name of the jailroom ?
+jail_room          shark_alley
+
+#days before a user is delolded
+purgedays          30
+
+#do we fork after boot ?
+fork               YES
+
+ROOMS:
+oc ocean_cove           cr,kf,oo,s,at   PUB
+cr coral_reef           oc              BOTH
+s  sanctuary            oc,oo,sd,sa     PRIV
+oo open_ocean           oc,c,sd,s,ws    PUB
+ws *warm_spring		oo,kf		BOTH
+kf kelp_forest          oc,ws           BOTH
+c  caverns              oo,sd,sc        PUB
+sc *small_cave		c		BOTH
+sd slit_dreams          oo,c,s          BOTH
+sa shark_alley          s		BOTH
+dc dream_cove           oc              PUB
+pr *phin_retreat        s               PRIV
+at access_tunnel        oc              PUB

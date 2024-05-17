@@ -1,0 +1,13 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : people                                     ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : people [-n]
+
+   This command shows who is loged in and gives various statistics about 
+   them and their site.
+   use the '-n' option to show nummeric ip's instead of text one's
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : who, site, status
+~FT+-----------------------------------------------------------------------------+

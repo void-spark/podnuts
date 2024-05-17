@@ -1,0 +1,14 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : nuke                                      ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : nuke <username> 
+
+   This will delete a user on the system but they cannot be logged in
+   at the time so if someone is annoying you .kill them first *then* 
+   delete them. Using this command COMPLETELY deletes the account and it 
+   cannot be recovered, so be sure before you execute it.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : delold
+~FT+-----------------------------------------------------------------------------+

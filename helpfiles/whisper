@@ -1,0 +1,17 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : whisper                                   ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : whisper <user> <message>
+
+   Whispers a special something to someone in the room. Others in the room
+   can see that you have whispered something, but they cannot tell what it
+   is that has been said. It is a bit like an in-between between tell and
+   sayto ( sto ). Messages are recorded in .revtell and the public version
+   is recorded in .rev. You can only whisper to someone who is in the same
+   room as you.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : say, sto, tell, revtell, review
+~FT+-----------------------------------------------------------------------------+
+

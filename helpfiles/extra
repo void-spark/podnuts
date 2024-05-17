@@ -1,0 +1,40 @@
+~FT+-----------------------------------------------------------------------------+   
+~FT   Command~RS  : macro                                     ~FTPODnuts Revision
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : macro                                 (to list the macros)
+              macro <macroname>=<replacement text>  (to make/change a macro)
+              macro <macroname>=                    (to delete a macro)
+              $n to match name  (replaces $1)
+
+   Description:
+
+   Miscellaneous matching in macros
+    1) User misc matching:
+         These are the current $ variables that show your own info :
+ 
+            $c is replaced by your color.
+            $t is replaced by your species.
+            $h is replaced by your mood.
+            $w is replaced by your noise.
+
+    2) Target misc matching:
+         When you use this type of misc matching, the $ gets replaced by
+         a stat of the user you target (by passing it as the first
+         value when using the macro )
+ 
+            $C is replaced by the target's color.
+            $T is replaced by the target's species.
+ 
+    EXAMPLES:
+    ~OL~FR.macro .hap=;is a /~FT/~OLhappy$c $t !.
+    ~OL~FTProduces: 
+    ~RS~FYBob is a ~FT~OLhappy~RS~FY Dolphin !.~RS
+
+    ~OL~FR.macro .glad=.emote is glad $n is such a happy $T ! :).
+    ~OL~FTProduces: (Beth -> Bob)   
+    Beth is glad Bob is such a happy Dolphin ! :).~RS
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : action
+~FT+-----------------------------------------------------------------------------+

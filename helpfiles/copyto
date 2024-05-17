@@ -1,0 +1,16 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : copyto                                    ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : copyto <user user user>
+              then smail <message>
+
+   You can send smail to users by typing usernames seperated by one 
+   space.  This function is a great timesaver when you want to mail 
+   the same information to multiple users.  This command establishes 
+   a temp mailing list that will be used for the smail you send after
+   you set the names by using copyto.
+
+~FT+-----------------------------------------------------------------------------+
+~FT   See also~RS : rmail, dmail, from, smail
+~FT+-----------------------------------------------------------------------------+

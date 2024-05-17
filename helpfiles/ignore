@@ -1,0 +1,35 @@
+~FT+-----------------------------------------------------------------------------+
+~FT   Command~RS  : ignore                                    ~FTPODnuts
+~FT+-----------------------------------------------------------------------------+
+
+~FT   Usage~RS    : ignore <all/tell/shout/pictures/atmos/system/wtell>
+   This command allows you to ignore different types of messages,
+   just ".ignore" by itself will show which messages are being ignored
+   right now.
+
+   The sets of messages you can ignore are as follows:
+   
+   ~FT.ignore all~RS : This is a toggle that makes you ignore basicly 
+   everything, exept for some very high priority messages like shutdowns
+   or leader tells. This is set automaticly when reading mail/news/using 
+   the editor/etc.
+
+   ~FT.ignore tell~RS : This is a toggle which will switch on or off the
+   ability of other users to send you .tells or other private chat.
+   
+   ~FT.ignore shout~RS : This is a toggle that will switch on or off whether
+   you hear shouts or not.
+
+   ~FT.ignore pictures~RS : This is a toggle that will switch on or off
+   whether you can see/receive pictures or not.
+
+   ~FT.ignore atmos~RS : This is a toggle that will switch on or off whether
+   you can see atmospherics.
+
+   ~FT.ignore system~RS : This is a toggle that will switch on or off if 
+   you see system messages.
+
+   ~FT.ignore wtell~RS : This is a toggle that will switch on or off if you 
+   see wizard chat (adphins only).
+
+~FT+-----------------------------------------------------------------------------+
