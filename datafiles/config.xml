@@ -1,0 +1,69 @@
+<podconfig>
+    <init>
+        <setting name="mainport" value="7300"/>
+        <setting name="wizport" value="7301"/>
+        <setting name="infoport" value="7303"/>
+        <setting name="mailport" value="7304"/>
+        <!-- <plugin>
+        </plugin>-->
+    </init>
+    <rooms>
+        <room name="ocean_cove" shortcut="oc" access="PUB" hidden="false">
+            <link shortcut="cr"/>
+            <link shortcut="kf"/>
+            <link shortcut="oo"/>
+            <link shortcut="s"/>
+            <link shortcut="at"/>
+        </room>
+        <room name="coral_reef" shortcut="cr" access="BOTH" hidden="false">
+            <link shortcut="oc"/>
+        </room>
+        <room name="sanctuary" shortcut="s" access="PRIV" hidden="false">
+            <link shortcut="oc"/>
+            <link shortcut="oo"/>
+            <link shortcut="sd"/>
+            <link shortcut="sa"/>
+        </room>
+        <room name="open_ocean" shortcut="oo" access="PUB" hidden="false">
+            <link shortcut="oc"/>
+            <link shortcut="c"/>
+            <link shortcut="sd"/>
+            <link shortcut="s"/>
+            <link shortcut="ws"/>
+        </room>
+        <room name="warm_spring" shortcut="ws" access="BOTH" hidden="true">
+            <link shortcut="oo"/>
+            <link shortcut="kf"/>
+    
+        </room>
+        <room name="kelp_forest" shortcut="kf" access="BOTH" hidden="false">
+            <link shortcut="oc"/>
+            <link shortcut="ws"/>
+        </room>
+        <room name="caverns" shortcut="c" access="PUB" hidden="false">
+            <link shortcut="oo"/>
+            <link shortcut="sd"/>
+            <link shortcut="sc"/>
+        </room>
+        <room name="small_cave" shortcut="sc" access="BOTH" hidden="true">
+            <link shortcut="c"/>
+        </room>
+        <room name="slit_dreams" shortcut="sd" access="BOTH" hidden="false">
+            <link shortcut="oo"/>
+            <link shortcut="c"/>
+            <link shortcut="s"/>
+        </room>
+        <room name="shark_alley" shortcut="sa" access="BOTH" hidden="false">
+            <link shortcut="s"/>
+        </room>
+        <room name="dream_cove" shortcut="dc" access="PUB" hidden="false">
+            <link shortcut="oc"/>
+        </room>
+        <room name="phin_retreat" shortcut="pr" access="PRIV" hidden="true">
+            <link shortcut="s"/>
+        </room>
+        <room name="access_tunnel" shortcut="at" access="PUB" hidden="false">
+            <link shortcut="oc"/>
+        </room>
+    </rooms>
+</podconfig>

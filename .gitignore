@@ -1,0 +1,9 @@
+/.vscode
+*.o
+*.so
+/src/objs/pod
+/src/objs/softbooter
+/src/compiler.h
+/src/c_count_output.cpp
+/bin/pod
+/bin/softbooter

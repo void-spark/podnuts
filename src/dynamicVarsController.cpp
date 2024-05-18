@@ -27,7 +27,7 @@ int DynamicVarsController::createObj(BasicVar** & data_ptr)
 {
    VarsTemplMap::iterator iterator;
 
-   data_ptr = new (BasicVar*)[varsTemplMap.size()];
+   data_ptr = new BasicVar* [varsTemplMap.size()];
    if ( !data_ptr )
    {
       write_syslog("ERROR: Memory allocation failure in  DynamicVarsController::createObj().\n",0);

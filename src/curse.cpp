@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include <stdlib.h>
+#include <algorithm>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -631,7 +632,7 @@ pod_string reverse_words( pod_string &input )
          }
          pod_string word = input.substr(pos,wordpos-pos);
 //         printf("word: %s\n",word.c_str());
-         reverse(word.begin(), word.end());
+         std::reverse(word.begin(), word.end());
          input.replace(pos,wordpos-pos,word);
 
          ColorMap::iterator colorStatus = colors.find( pos );

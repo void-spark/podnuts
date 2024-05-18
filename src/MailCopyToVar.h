@@ -17,7 +17,7 @@ class CopyToVar : public BasicVar
       void   toXML( xmlTextWriterPtr ptr  );
       void   fromXML( XmlTextReader * reader );
       int    init();
-      pod_string CopyToVar::toText();
+      pod_string toText();
       int send(UR_OBJECT user,char* message);
       int to(UR_OBJECT user,char *inpstr);
 

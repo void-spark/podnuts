@@ -1,7 +1,8 @@
 C++FLAGS = -Wall `xml2-config --cflags` ;
 CCFLAGS = -Wall `xml2-config --cflags` ;
-DEFINES = DEBUG_NEW DEBUG_STL MALLOC_STATS ;
-OBJECT_LOCATION = ./objs/ ;
+#DEFINES = DEBUG_NEW DEBUG_STL MALLOC_STATS ;
+DEFINES = DEBUG_NEW MALLOC_STATS ;
+OBJECT_LOCATION = ./objs ;
 EXE = pod ;
 SOFTBOOT_EXE = softbooter ;
 INSTALL_ROOT = ../ ;
@@ -9,84 +10,30 @@ EXE_INSTALL = $(INSTALL_ROOT)/bin_new/ ;
 SOFTBOOT_INSTALL = $(INSTALL_ROOT)/bin/ ;
 PLUGINS_INSTALL = $(INSTALL_ROOT)/plugins_new/ ;
 
-switch $(OS)
+C++ = g++ ;
+CC = gcc ;
+LINK = g++ ;
+LINKFLAGS = -rdynamic ;
+LINKLIBS = -lcrypt -ldl `xml2-config --libs` ;
+SHRLINKFLAGS = -shared ;
+SHRC++FLAGS = -fPIC ;
+SHRLINKLIBS = ; 
+PRESHR = lib ;
+SUFSHR = .so ;
+OPTIM = -pipe -g ;
+
+actions ShowMe
 {
-   case FREEBSD : 
-      C++ = g++30 ;
-      CC = gcc30 ;
-      LINK = g++30 ;
-      LINKFLAGS = -rdynamic ;
-      LINKLIBS = -lcrypt ;
-      SHRLINKFLAGS = -shared ;
-      SHRC++FLAGS = -fPIC ;
-      SHRLINKLIBS = ; 
-      PRESHR = lib ;
-      SUFSHR = .so ;
-      OPTIM = -pipe -g ;
-
-   case LINUX :
-      C++ = g++ ;
-      CC = gcc ;
-      LINK = g++ ;
-      LINKFLAGS = -rdynamic ;
-      LINKLIBS = -lcrypt -ldl `xml2-config --libs` ;
-      SHRLINKFLAGS = -shared ;
-      SHRC++FLAGS = -fPIC ;
-      SHRLINKLIBS = ; 
-      PRESHR = lib ;
-      SUFSHR = .so ;
-      OPTIM = -pipe -g ;
-
-   case CYGWIN :
-      C++ = g++ ;
-      CC = gcc ;
-      LINK = g++ ;
-      LINKFLAGS = ;
-      LINKLIBS = -lcrypt ; 
-      DLLTOOL = dlltool ;
-      DLLWRAP = dllwrap ;
-      SHRC++FLAGS = ;
-      SHRLINKFLAGS = -shared -Wl,--export-all-symbols  ;
-      SHRLINKLIBS = -L./ -l$(EXE) ; 
-      PRESHR = lib ;
-      SUFSHR = .dll ;
-      OPTIM = -pipe ;
-} 
+   echo $(1)
+}
 
 rule SharedLibrary
 {
    # SharedLibrary <name> : <sources> ;
    Main $(PRESHR)$(1)$(SUFSHR) : $(2) ;
-   C++FLAGS on $(PRESHR)$(1)$(SUFSHR) = $(C++FLAGS) $(SHRC++FLAGS) ;
+   ObjectC++Flags $(2) : $(SHRC++FLAGS) ;
    LINKFLAGS on $(PRESHR)$(1)$(SUFSHR) = $(LINKFLAGS) $(SHRLINKFLAGS) ;
    LINKLIBS on $(PRESHR)$(1)$(SUFSHR) = $(LINKLIBS) $(SHRLINKLIBS) ;
-
-   if $(OS) = CYGWIN
-   {
-      Depends $(PRESHR)$(1)$(SUFSHR) : lib$(EXE).a ;
-   }
-}
-
-rule DefFile
-{
-   Depends $(1) : $(2) ;
-}
-
-actions DefFile
-{
-   $(DLLTOOL) --export-all-symbols --output-def $(1) $(2)
-}
-
-rule ImportLib
-{
-   Depends $(1) : $(2) ;
-   FULLEXE on $(1) = [ FAppendSuffix $(EXE) : $(SUFEXE) ] ;
-}
-
-actions ImportLib
-{
-   $(C++) -shared -dll -o $(FULLEXE) $(2) -Wl,--export-all-symbols $(LINKLIBS) -Wl,--out-implib,$(1)
-   rm -f $(FULLEXE)
 }
 
 actions CompilerInfo
@@ -112,46 +59,7 @@ actions CodeInfo
 
 rule MainExecutable
 {
-   if $(OS) = CYGWIN
-   {
-      local OBJECTS ;
-      local FULLEXE ;
-      OBJECTS = $(2:S=$(SUFOBJ)) ;
-      FULLEXE = [ FAppendSuffix $(1) : $(SUFEXE) ] ;
-      
-      Depends exe : $(FULLEXE) ;
-      
-      Objects $(2) ;
-
-      DefFile $(1).def : $(OBJECTS) ;      
-      ImportLib lib$(1).a : $(OBJECTS) ;
-      Clean clean : $(1).def lib$(1).a ;
-      if $(FULLEXE) != $(1)
-      {
-         Depends $(1) : $(FULLEXE) ;
-         NotFile $(1) ;
-      }
-#depends on libpod.a cause making that file generates a dummy pod exe that is removed.      
-      CompileExeCygwin $(FULLEXE) : $(1).def lib$(1).a $(OBJECTS) ;
-   }
-   else
-   {
-      Main $(1) : $(2) ;
-   }
-}
-
-rule CompileExeCygwin
-{
-   Depends $(1) : $(2) ;
-}
-
-actions CompileExeCygwin
-{
-   $(DLLTOOL) --dllname $(1) --output-exp $(1).exp --def $(2[1])
-   $(LINK) -o $(1) -Wl,--base-file,$(1).base $(1).exp $(2[3-]) $(LINKLIBS)
-   $(DLLTOOL) --dllname $(1) --base-file $(1).base --output-exp $(1).exp --def $(2[1])
-   $(LINK) -o $(1) $(1).exp $(2[3-]) $(LINKLIBS)
-   rm $(1).exp $(1).base 
+   Main $(1) : $(2) ;
 }
 
 MAIN_SOURCES = podnuts.cpp user_objects.cpp socket_funcs.cpp GenericMessage.cpp
@@ -170,10 +78,10 @@ MAIN_SOURCES = podnuts.cpp user_objects.cpp socket_funcs.cpp GenericMessage.cpp
                UserTelnetHandler.cpp UserTelnetSockObjectCreator.cpp StringLibrary.cpp
                XmlTextReader.cpp gender.cpp StringLibraryCommands.cpp ;
       
-SIMPLE_TYPES_LOCATION = ./simple_types ;
+SIMPLE_TYPES_LOCATION = simple_types ;
 SIMPLE_TYPES_SOURCES = [ GLOB $(SIMPLE_TYPES_LOCATION) : *.cpp ] ;
 
-SHARED_LIBS_LOCATION = ./plugins ;
+SHARED_LIBS_LOCATION = plugins ;
 SHARED_LIBS_SOURCES = [ GLOB $(SHARED_LIBS_LOCATION) : *.cpp ] ;
 
 POD_SOURCES = $(MAIN_SOURCES) $(SIMPLE_TYPES_SOURCES) ;

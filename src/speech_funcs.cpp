@@ -1,5 +1,6 @@
 #include <stdarg.h>
 #include <sys/time.h>
+#include <algorithm>
 #include "GlobalVars.h"
 #include "socket_funcs.h"
 #include "Room.h"
@@ -244,7 +245,7 @@ std::streamsize WriteRoomBuff::xsputn(const char* s, std::streamsize n)
                 (GET_IGNORE_PIC(u)->get()   &&  picCmdsSet.count(currentCommand) ) ||
                 (GET_IGNORE_ATMOS(u)->get() &&  (com_status == COM_ATMOS) ) ||
                 (GET_IGNORE_SYS(u)->get()   &&  (com_status == COM_SYS) ) ||
-                find( exceptUsers.begin() , exceptUsers.end() , u ) != exceptUsers.end() )
+                std::find( exceptUsers.begin() , exceptUsers.end() , u ) != exceptUsers.end() )
             {
                continue;
             }

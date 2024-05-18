@@ -201,11 +201,11 @@ int DNSSocket::doQuery( PlainSocket* socket )
 
    if (buf->conv != NULL)
    {
-      outputDoc.assign(reinterpret_cast<const char *>(buf->conv->content), buf->conv->use );
+      outputDoc.assign(reinterpret_cast<const char *>(xmlBufContent(buf->conv)), xmlBufUse(buf->conv) );
    }
    else
    {
-      outputDoc.assign(reinterpret_cast<const char *>(buf->buffer->content), buf->buffer->use );
+      outputDoc.assign(reinterpret_cast<const char *>(xmlBufContent(buf->buffer)), xmlBufUse(buf->buffer) );
    }
 
    xmlFreeTextWriter( ptr );
