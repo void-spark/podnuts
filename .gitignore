@@ -9,3 +9,4 @@
 /bin/softbooter
 /utils/dnsDeamon/dnsDeamon.ex
 /utils/dnsDeamon/dnsDeamonTest.ex
+/logfiles/*

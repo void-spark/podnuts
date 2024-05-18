@@ -1,0 +1,16 @@
+<globalstrings>
+    <item name="nosuchuser">Sorry, that user does not exist.</item>
+    <item name="nosuchroom">Sorry, that room does not exist.</item>
+    <item name="notloggedon">There is no user of that name logged on.</item>
+    <item name="invisname">An entity</item>
+    <item name="cloaked_name">A shadow</item>
+    <item name="cloaked_noise">whisper</item>
+    <item name="syserror">Sorry, a system error has occured.</item>
+    <item name="noswearing">We are not allowing swearing here.</item>
+    <item name="invisenter">A glowing entity floats in...</item>
+    <item name="invisleave">A strange blue glow fades into the distance.</item>
+    <item name="macro_too_big">Macro overflow error, you almost killed the talker!</item>
+    <item name="seperator_line">~FT+-----------------------------------------------------------------------------+~RS</item>
+    <item name="ink_name">Somephin</item>
+    <item name="ink_noise">say</item>
+</globalstrings>

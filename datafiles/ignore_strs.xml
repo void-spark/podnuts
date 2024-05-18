@@ -1,0 +1,29 @@
+<globalstrings>
+    <!-- room msg when (un)ignoring pictures -->
+    <item name="ign_pics">'s melon now reflects pictures</item>
+    <item name="unign_pics">can see pictures again</item>
+
+    <!-- room msg when (un)ignoring everyphin -->
+    <item name="ign_all">is now ignoring everyone.</item>
+    <item name="unign_all">is listening again.</item>
+
+    <!-- room msg when (un)ignoring atmoses -->
+    <item name="ign_atmos">now ignores atmospherics</item>
+    <item name="unign_atmos">notices atmospherics again</item>
+
+    <!-- room msg when (un)ignoring system msgs -->
+    <item name="ign_sys">stops listening to system msgs</item>
+    <item name="unign_sys">listens to system msgs again</item>
+
+    <!-- room msg when (un)ignoring wizard chitter -->
+    <item name="ign_wtell">ignores wise talk</item>
+    <item name="unign_wtell">stops ignoring wise talk</item>
+
+    <!-- room msg when (un)ignoring shouts -->
+    <item name="ign_shout">plugs his ears against shouting</item>
+    <item name="unign_shout">removes the kelp from his melon to hear shouting again</item>
+
+    <!-- room msg when (un)ignoring tells -->
+    <item name="ign_tell">doesn't want to hear any ptivate chitter anymore</item>
+    <item name="unign_tell">listens again to tells and privs and so</item>
+</globalstrings>
