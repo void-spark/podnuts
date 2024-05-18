@@ -16,7 +16,7 @@
 #include <ext/stdio_filebuf.h>
 #include <time.h>
 
-#include "../tinyxml/tinyxml.h"
+#include "tinyxml.h"
 #include "errorClasses.h"
 
 main( int argc, char *argv[] )
@@ -43,7 +43,7 @@ main( int argc, char *argv[] )
    while( connect(newSocket,(struct sockaddr *)&connect_addr,size) == -1 );
 
    #warning, last param is a buffer size that used to be 1, newest libstdc++ that does odd things tho , misses each second char
-   socketStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( newSocket, std::ios::in|std::ios::out, true, 512 );
+   socketStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( newSocket, std::ios::in|std::ios::out, 512 );
    socketStream  = new std::iostream( socketStreamBuffer );
 
    TiXmlDocument outputDoc;

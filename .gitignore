@@ -7,3 +7,5 @@
 /src/c_count_output.cpp
 /bin/pod
 /bin/softbooter
+/utils/dnsDeamon/dnsDeamon.ex
+/utils/dnsDeamon/dnsDeamonTest.ex

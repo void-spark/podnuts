@@ -1,0 +1,8 @@
+C++ = g++ ;
+CC = gcc ;
+LINK = g++ ;
+
+LINKLIBS = -ltinyxml ;
+
+Main dnsDeamon.ex : dnsdeamon.cpp ;
+Main dnsDeamonTest.ex : dnsDeamonTest.cpp ;

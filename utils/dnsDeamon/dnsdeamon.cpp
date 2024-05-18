@@ -15,7 +15,7 @@
 #include <fcntl.h>
 #include <ext/stdio_filebuf.h>
 #include <time.h>
-#include "../tinyxml/tinyxml.h"
+#include "tinyxml.h"
 #include "errorClasses.h"
 #include "dnsdeamon.h"
 
@@ -131,7 +131,7 @@ main( int argc, char *argv[] )
    {
       talkerSocketFd = accept_socket(listenFd);
       #warning, last param is a buffer size that used to be 1, newest libstdc++ that does odd things tho , misses each second char
-      socketStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( talkerSocketFd, std::ios::in|std::ios::out, true, 512 );
+      socketStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( talkerSocketFd, std::ios::in|std::ios::out, 512 );
       socketStream  = new std::iostream( socketStreamBuffer );
 
       if( !socketStream->good())
@@ -369,11 +369,11 @@ void childProcess::spawn()
          close( to_child_fds[write_fd] );
          close( from_child_fds[read_fd] );
          childReadFd      = to_child_fds[read_fd];
-         childReadStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( childReadFd, std::ios_base::in, true , 1 );
+         childReadStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( childReadFd, std::ios_base::in, 1 );
          childReadStream  = new std::ifstream;
          childReadStream->std::basic_ios<char>::rdbuf(childReadStreamBuffer);
          childWriteFd     = from_child_fds[write_fd];
-         childWriteStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( childWriteFd, std::ios_base::out, true , BUFSIZ );
+         childWriteStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( childWriteFd, std::ios_base::out, BUFSIZ );
          childWriteStream  = new std::ofstream;
          childWriteStream->std::basic_ios<char>::rdbuf(childWriteStreamBuffer);
          run();
@@ -383,11 +383,11 @@ void childProcess::spawn()
          close( to_child_fds[read_fd] );
          close( from_child_fds[write_fd] );
          parentReadFd      = from_child_fds[read_fd];
-         parentReadStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( parentReadFd, std::ios_base::in, true , 1 );
+         parentReadStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( parentReadFd, std::ios_base::in, 1 );
          parentReadStream  = new std::ifstream;
          parentReadStream->std::basic_ios<char>::rdbuf(parentReadStreamBuffer);
          parentWriteFd     = to_child_fds[write_fd];
-         parentWriteStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( parentWriteFd, std::ios_base::out, true , BUFSIZ );
+         parentWriteStreamBuffer = new __gnu_cxx::stdio_filebuf<char>( parentWriteFd, std::ios_base::out, BUFSIZ );
          parentWriteStream  = new std::ofstream;
          parentWriteStream->std::basic_ios<char>::rdbuf(parentWriteStreamBuffer);
    }
